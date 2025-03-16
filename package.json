@@ -1,0 +1,18 @@
+{
+  "name": "photoapp",
+  "version": "1.0.0",
+  "description": "photoApp project",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Alp Salcıoğlu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
