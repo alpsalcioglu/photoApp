@@ -1,12 +1,31 @@
 import express from "express";
+import dotenv from "dotenv";
+import conn from "./db.js";
+import cookieParser from "cookie-parser";
+import pageRoute from "./routes/pageRoute.js";
+import photoRoute from "./routes/photoRoute.js";
+import userRoute from "./routes/userRoute.js";
+import { checkUser } from "./middlewares/authMiddleware.js";
+
+dotenv.config();
+
+conn();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
-app.get("/", (req,res)=>{
-    res.send("Index Page");
-});
+app.set("view engine", "ejs");
 
-app.listen(port, ()=>{
-    console.log(`Application runninggggg on port: ${port}`);
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.get("*", checkUser);
+app.use("/", pageRoute);
+app.use("/photos", photoRoute);
+app.use("/users", userRoute);
+
+app.listen(port, () => {
+    console.log(`Application running on port: ${port}`);
 });
