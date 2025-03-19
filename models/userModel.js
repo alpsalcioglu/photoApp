@@ -9,7 +9,19 @@ const userSchema = new Schema({
     email: {
         type: String, required: [true, "Email area is required!"], unique: true, validate: [validator.isEmail, "Valid email format is required! "]
     },
-    password: { type: String, required: [true, "Password area is required!"], minlength: [passlength, `Password should be at least ${passlength} characters!`] }
+    password: { type: String, required: [true, "Password area is required!"], minlength: [passlength, `Password should be at least ${passlength} characters!`] },
+    followers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    followings: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ]
 }, {
     versionKey: false,
     timestamps: true

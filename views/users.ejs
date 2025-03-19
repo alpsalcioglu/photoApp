@@ -30,7 +30,7 @@
                   </div>
                   <div class="craig">
                     <h3>
-                      <%= user.name %>
+                      <%= user.username %>
                     </h3>
                     <span>PHOTOGRAPHER</span>
                     <ul class="social_icon">
@@ -42,6 +42,10 @@
                       </li>
                       <li>
                         <a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </li>
+                      <li>
+                        <a href="/users/<%= user._id %>"><i class="fa fa-external-link-square"
+                            aria-hidden="true"></i></a>
                       </li>
                     </ul>
                   </div>
