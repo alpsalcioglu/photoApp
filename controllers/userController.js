@@ -1,21 +1,33 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Photo from "../models/photoModel.js";
 
 const createUser = async (req, res) => {
     try {
         const user = await User.create(req.body);
-        //     res.status(201).json({
-        //     success: true,
-        //     user
-        // });
-        res.redirect("/login");
+        res.status(201).json({ user: user._id });
+
 
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            error
-        });
+
+
+
+        let errors2 = {};
+
+        if (error.code === 11000) {
+            errors2.email = "The Email is aldready registered!";
+        }
+
+        if (error.name === "ValidationError") {
+            Object.keys(error.errors).forEach((key) => {
+                errors2[key] = error.errors[key].message;
+            });
+        }
+
+
+
+        res.status(400).json(errors2);
     }
 };
 
@@ -64,11 +76,43 @@ const createToken = (userId) => {
     return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "1d" });
 }
 
-const getDashboardPage = (req, res) => {
+const getDashboardPage = async (req, res) => {
+    const photos = await Photo.find({ user: res.locals.user._id })
     res.render("dashboard", {
-        link: "dashboard"
+        link: "dashboard",
+        photos
     });
 };
 
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({ _id: { $ne: res.locals.user._id } });
+        res.status(200).render("users", {
+            users,
+            link: "users"
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error
+        });
+    }
+};
 
-export { createUser, loginUser, getDashboardPage };
+const getUser = async (req, res) => {
+    try {
+        const user = await User.findById({ _id: req.params.id });
+        res.status(200).render("user", {
+            user,
+            link: "users"
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error
+        });
+    }
+};
+
+
+export { createUser, loginUser, getDashboardPage, getAllUsers, getUser };
