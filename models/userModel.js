@@ -21,7 +21,8 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "User"
         }
-    ]
+    ],
+    photoUrl: { type: String, default: "https://res.cloudinary.com/dbn2fj7f0/image/upload/v1742582736/photoAppPP/tmp-2-1742582735185_lxbhtv.webp" }
 }, {
     versionKey: false,
     timestamps: true

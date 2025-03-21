@@ -1,6 +1,7 @@
 import Photo from "../models/photoModel.js";
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
+import User from "../models/userModel.js";
 
 const createPhoto = async (req, res) => {
 
@@ -125,4 +126,45 @@ const updatePhoto = async (req, res) => {
         });
     }
 }
-export { createPhoto, getAllPhotos, getPhoto, deletePhoto, updatePhoto };
+
+const createProfilePhoto = async (req, res) => {
+
+    try {
+
+
+
+        const user = await User.findById({ _id: res.locals.user._id });
+        const isCustomPhoto = user.photoUrl && !user.photoUrl.includes("photoAppPP/tmp-2-1742582735185_lxbhtv.webp");
+
+        if (isCustomPhoto) {
+
+            const oldPhotoPublicId = user.photoUrl.split('/').pop().split('.')[0];
+            await cloudinary.uploader.destroy(`photoAppPP/${oldPhotoPublicId}`);
+        }
+
+        const photoResult = await cloudinary.uploader.upload(
+            req.files.image.tempFilePath,
+            {
+                use_filename: true,
+                folder: "photoAppPP"
+            }
+        );
+
+
+        user.photoUrl = photoResult.secure_url;
+        await user.save();
+
+        fs.unlinkSync(req.files.image.tempFilePath);
+
+        res.status(201).redirect("/users/dashboard");
+
+    } catch (error) {
+        console.error("Profile photo update error:", error);
+        res.status(500).send("Error updating profile photo.");
+    }
+
+
+
+};
+
+export { createPhoto, getAllPhotos, getPhoto, deletePhoto, updatePhoto, createProfilePhoto };

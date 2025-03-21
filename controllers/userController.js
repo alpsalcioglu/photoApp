@@ -177,4 +177,6 @@ const unfollow = async (req, res) => {
     }
 };
 
+
+
 export { createUser, loginUser, getDashboardPage, getAllUsers, getUser, follow, unfollow };

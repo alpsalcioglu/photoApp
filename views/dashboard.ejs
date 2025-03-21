@@ -42,16 +42,31 @@
                                     Ipsum is that it
                                 </p>
                                 <h3>The point of using </h3>
-                                <i><img src="/images/custo.jpg" alt="#" /></i>
+                                <i>
+                                    <img src="<%= user.photoUrl %>" alt="#"
+                                        style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; cursor: pointer;"
+                                        data-toggle="modal" data-target="#profileImageModal">
+                                </i>
+
+                                <div class="row">
+                                    <div class="col-md-12 text_align_center">
+                                        <button data-toggle="modal" data-target="#profilePicModal" type="button"
+                                            style=" margin-top:100px; margin-left: 50%; transform: translateX(-50%);  padding: 0px 5px 5px 5px; font-size: 14px; width: auto; min-width: 120px; "
+                                            class="read_more" href="about.html">Change Profile Picture</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 text_align_center">
                             <button data-toggle="modal" data-target=".bd-example-modal-lg" type="button"
                                 style=" margin-top:100px; margin-left: 50%; transform: translateX(-50%);"
-                                class="read_more" href="about.html">Add New Photo</button>
+                                class="read_more" href="about.html">Post New Photo</button>
                         </div>
                     </div>
 
@@ -75,7 +90,8 @@
                                 <% for(photo of photos){ %>
                                     <div class="col-lg-4 col-md-6 ma_bottom30">
                                         <div class="lightbox">
-                                            <img src="<%= photo.url %>" alt="<%= photo.name %>" />
+                                            <img src="<%= photo.url %>" alt="<%= photo.name %>"
+                                                style="width: 300px; height: 300px;" />
                                             <div class="view_main">
                                                 <div class="pose">
                                                     <a class="read_more" href="/photos/<%= photo._id %>"><img
@@ -115,7 +131,9 @@
                                         <div class="col-md-4">
                                             <div class="team_box text_align_center">
                                                 <div class="team_img">
-                                                    <figure><img src="/images/team1.jpg" alt="#" /></figure>
+                                                    <figure><img src="<%= follower.photoUrl %>" alt="#"
+                                                            style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;" />
+                                                    </figure>
                                                 </div>
                                                 <div class="craig">
                                                     <h3>
@@ -170,7 +188,9 @@
                                                 <div class="col-md-4">
                                                     <div class="team_box text_align_center">
                                                         <div class="team_img">
-                                                            <figure><img src="/images/team1.jpg" alt="#" /></figure>
+                                                            <figure><img src="<%= following.photoUrl %>" alt="#"
+                                                                    style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;" />
+                                                            </figure>
                                                         </div>
                                                         <div class="craig">
                                                             <h3>
@@ -256,13 +276,69 @@
                                                                     <div class="col-md-12">
                                                                         <div class="group_form">
                                                                             <button class="read_more">Upload
-                                                                                File</button>
+                                                                                Photo</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="profilePicModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="profilePicModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="profilePicModalLabel">Update Profile
+                                                        Picture</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body text-center">
+
+                                                    <img src="<%= user.photoUrl %>" alt="Profile Picture"
+                                                        class="profile-img-preview">
+
+
+                                                    <form id="request" class="main_form" method="POST"
+                                                        action="/photos/profilephoto" enctype="multipart/form-data">
+                                                        <div class="form-group">
+                                                            <input type="file" name="image"
+                                                                class="form-control-file mt-3" required>
+                                                        </div>
+
+
+                                                        <button type="submit" class="read_more"
+                                                            style="display: block; margin: 0 auto;">Update</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Profil Fotoğrafı İçin Modal -->
+                                    <div class="modal fade" id="profileImageModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="profileImageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="profileImageModalLabel">Profile Picture
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img src="<%= user.photoUrl %>" alt="Profile Picture"
+                                                        class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
