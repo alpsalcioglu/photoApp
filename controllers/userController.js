@@ -77,7 +77,9 @@ const createToken = (userId) => {
 }
 
 const getDashboardPage = async (req, res) => {
-    const photos = await Photo.find({ user: res.locals.user._id });
+    const photos = await Photo.find({ user: res.locals.user._id }).sort({ uploadedAt: -1 });
+
+
     const user = await User.findById({ _id: res.locals.user._id }).populate(["followings", "followers"]);
     res.render("dashboard", {
         link: "dashboard",
