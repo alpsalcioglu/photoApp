@@ -117,7 +117,7 @@ h4 a,
 h5 a,
 h6 a {
     color: #212121;
-    text-decoration: none!important;
+    text-decoration: none !important;
     opacity: 1
 }
 
@@ -163,7 +163,7 @@ img {
     height: auto;
 }
 
- :focus {
+:focus {
     outline: 0;
 }
 
@@ -249,6 +249,15 @@ button {
     flex-wrap: wrap;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: center;
+    /* Yatay ortalama */
+    align-items: center;
+    /* Dikey ortalama */
+    margin-top: 20px;
+}
+
 .read_more {
     font-size: 17px;
     background: #f6388e;
@@ -263,6 +272,7 @@ button {
     border-radius: 5px;
     font-weight: normal;
 }
+
 
 .read_more:hover {
     background: #fff;
@@ -334,12 +344,15 @@ button {
     line-height: 20px;
 
 }
+
 .logo a span {
     color: #f6388e;
 }
+
 .navbar-area {
     float: left;
 }
+
 .site-navbar ul {
     margin: 0;
     padding: 0;
@@ -352,7 +365,7 @@ button {
     font-size: 16px;
     display: block;
     text-decoration: none;
-    padding:0px;
+    padding: 0px;
     font-weight: normal;
     font-weight: 500;
 }
@@ -368,6 +381,7 @@ button {
 .site-navbar ul li a:hover {
     color: #f6388e;
 }
+
 .site-navbar ul li a.active {
     color: #f6388e;
 }
@@ -438,20 +452,24 @@ button {
 
 /* intro-area css end */
 ul.email li {
-     display: inline-block;
-     padding-right: 30px;
+    display: inline-block;
+    padding-right: 30px;
 }
-ul.email li:last-child {padding-right: 0;}
+
+ul.email li:last-child {
+    padding-right: 0;
+}
+
 ul.email li a {
-     color: #1a1b1b;
-     font-size: 17px;
+    color: #1a1b1b;
+    font-size: 17px;
 }
 
 ul.email li i {
-     color: #1a1b1b;
-     font-size: 19px;
-     ;
-     padding-left: 10px;
+    color: #1a1b1b;
+    font-size: 19px;
+    ;
+    padding-left: 10px;
 }
 
 /** end header **/
@@ -459,12 +477,12 @@ ul.email li i {
 
 /** banner section **/
 .slider_main {
-    background: url(../images/banner.jpg) ;
+    background: url(../images/banner.jpg);
     height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-        padding: 90px 0;
+    padding: 90px 0;
 }
 
 .relative {
@@ -484,9 +502,11 @@ ul.email li i {
     text-align: left;
     padding-left: 80px;
 }
+
 .bt_fe {
     position: relative;
 }
+
 .bt_fe::before {
     position: absolute;
     content: "";
@@ -496,6 +516,7 @@ ul.email li i {
     background: #f6388e;
     width: 40%;
 }
+
 .creative h1 {
     font-size: 100px;
     line-height: 100px;
@@ -513,18 +534,22 @@ ul.email li i {
     font-weight: bold;
     font-size: 20px;
     background: #fff;
-    color:#000;
+    color: #000;
 }
+
 .creative .read_more:hover {
     background: #000;
     color: #fff;
 }
+
 .cemara figure {
     margin: 0;
 }
+
 .cemara figure img {
     filter: drop-shadow(0px 3px 12px #00000069);
 }
+
 .slider_main .carousel-indicators {
     display: none;
 }
@@ -567,15 +592,15 @@ ul.email li i {
 /** gallery **/
 
 .gallery {
-     background:#fff;
-     padding-top: 80px;
+    background: #fff;
+    padding-top: 80px;
 }
 
 .container_with {
     max-width: 1517px;
     width: 100%;
     padding: 0 15px;
-    margin:0 auto;
+    margin: 0 auto;
     display: block;
     clear: both;
 }
@@ -585,19 +610,19 @@ ul.email li i {
 }
 
 .view_main {
-     position: absolute;
-     top: 0;
-     height: 100%;
-     left: 15px;
-     right: 15px;
-     overflow: hidden;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     opacity: 0;
-     transition: ease-in all 0.5s;
-     background: #f6388ed9;
-     cursor: pointer;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 15px;
+    right: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: ease-in all 0.5s;
+    background: #f6388ed9;
+    cursor: pointer;
 }
 
 .pose .read_more {
@@ -608,6 +633,7 @@ ul.email li i {
     line-height: 86px;
     border-radius: 50px;
 }
+
 .pose p {
     color: #fff;
     text-align: center;
@@ -615,20 +641,21 @@ ul.email li i {
     line-height: 25px;
     padding-top: 25px;
 }
+
 .view_main:hover {
-     opacity: 1;
-     transition: ease-in all 0.5s;
+    opacity: 1;
+    transition: ease-in all 0.5s;
 }
 
 
 
 .tz-gallery .lightbox img {
-     position: relative;
+    position: relative;
 }
 
 
 .ma_bottom30 {
-     margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .tz-gallery .lightbox h3 {
@@ -640,23 +667,23 @@ ul.email li i {
 }
 
 .tz-gallery .lightbox .view_btn {
-     position: absolute;
-     top: 46%;
-     left: 0;
-     color: #000;
-     font-size: 22px;
-     z-index: 9000;
-     right: 0;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     bottom: 0;
-     margin: 0 auto;
-     width: 56px;
-     height: 56px;
-     border-radius: 60px;
-     background-color: #fff;
-     transition: ease-in all 0.5s;
+    position: absolute;
+    top: 46%;
+    left: 0;
+    color: #000;
+    font-size: 22px;
+    z-index: 9000;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    margin: 0 auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 60px;
+    background-color: #fff;
+    transition: ease-in all 0.5s;
 }
 
 .plus_btn {
@@ -674,11 +701,13 @@ ul.email li i {
     transition: ease-in all 0.5s;
     margin-top: 60px;
 }
+
 .plus_btn:hover {
     background: #111111;
     color: #fff;
     transition: ease-in all 0.5s;
 }
+
 /** end gallery **/
 
 
@@ -703,11 +732,13 @@ ul.email li i {
 
 .about .titlepage {
     padding-bottom: 0;
- 
+
 }
+
 .about .titlepage h2 {
     color: #fff;
 }
+
 .about .titlepage p {
     padding-top: 45px;
     padding-bottom: 60px;
@@ -715,7 +746,7 @@ ul.email li i {
 }
 
 
-/** end about section **/   
+/** end about section **/
 
 
 
@@ -725,17 +756,21 @@ ul.email li i {
     background: #fefefd;
     padding-top: 90px;
 }
+
 .team .titlepage {
     padding-bottom: 30px;
 }
+
 .team_box {
     margin-top: 30px;
     background: #fff;
 }
+
 .team_img figure {
     margin: 0;
 
 }
+
 .craig {
     margin: 0 23px;
     padding: 35px 20px;
@@ -745,28 +780,33 @@ ul.email li i {
     z-index: 99999;
     position: relative;
 }
+
 .craig h3 {
-    color:#1e1e1e;
+    color: #1e1e1e;
     font-weight: bold;
     font-size: 30px;
     line-height: 30px;
     text-transform: uppercase;
 }
+
 .craig span {
-    color:#f6388e;
+    color: #f6388e;
     text-transform: uppercase;
     font-size: 20px;
     line-height: 23px;
     display: block;
     padding-top: 10px;
- }
+}
+
 ul.social_icon {
     padding-top: 30px;
 }
+
 ul.social_icon li {
     display: inline-block;
     padding: 0 15px;
 }
+
 ul.social_icon li a i {
     font-size: 19px;
     color: #272727;
@@ -774,6 +814,7 @@ ul.social_icon li a i {
     line-height: 30px;
     text-align: center;
 }
+
 ul.social_icon li a i:hover {
     color: #f6388e;
     transition: ease-in all 0.5s;
@@ -794,17 +835,20 @@ ul.social_icon li a i:hover {
     box-shadow: 0px 0 38px rgba(2, 3, 8, 0.13);
     padding: 80px 40px 40px 40px;
 }
+
 .satteb p {
     line-height: 30px;
 }
+
 .satteb h3 {
-    color:#353534;
+    color: #353534;
     font-weight: bold;
     font-size: 30px;
     line-height: 30px;
     padding-top: 51px;
     padding-bottom: 70px;
 }
+
 .satteb i img {
     border-radius: 50%;
     margin-bottom: -121px;
@@ -818,7 +862,7 @@ ul.social_icon li a i:hover {
     margin-bottom: 20px;
     width: 100%;
     height: 66px;
-    background:#fff;
+    background: #fff;
     color: #d0d0cf;
     font-size: 15px;
     font-weight: normal;
@@ -828,7 +872,7 @@ ul.social_icon li a i:hover {
 .main_form .form_cont {
     margin-bottom: 40px;
     width: 100%;
-    background:#fff;
+    background: #fff;
     color: #d0d0cf !important;
     font-size: 15px;
     font-weight: normal;
@@ -836,11 +880,13 @@ ul.social_icon li a i:hover {
     height: 179px;
     border: #6b6b6b solid 1px;
 }
+
 .group_form {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .group_form .send_btn {
     font-size: 18px;
     transition: ease-in all 0.5s;
@@ -880,7 +926,11 @@ ul.menu_footer {
     text-align: center;
     margin-bottom: 75px;
 }
-ul.menu_footer li {display: inline-block;}
+
+ul.menu_footer li {
+    display: inline-block;
+}
+
 ul.menu_footer li a {
     color: #1c1c1b;
     font-size: 17px;
@@ -891,11 +941,13 @@ ul.menu_footer li a {
     font-weight: 600;
     transition: ease-in all 0.5s;
 }
+
 ul.menu_footer li a.active {
     color: #fa3e8a;
     border-bottom: #f6388e solid 3px;
 
 }
+
 ul.menu_footer li a:hover {
     color: #fa3e8a;
     border-bottom: #f6388e solid 2px;
@@ -936,8 +988,8 @@ ul.top_infomation li a i:hover {
 .copyright {
     margin-top: 70px;
     background: #252525;
-        padding-top: 25px;
- padding-bottom: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 
@@ -948,7 +1000,7 @@ ul.top_infomation li a i:hover {
     text-align: left;
 
     font-weight: normal;
-   
+
 }
 
 .copyright a {
@@ -962,10 +1014,12 @@ ul.top_infomation li a i:hover {
 ul.social_icon_bottom {
     text-align: right;
 }
+
 ul.social_icon_bottom li {
     display: inline-block;
     padding-left: 30px;
 }
+
 ul.social_icon_bottom li a i {
     font-size: 19px;
     color: #fff;
@@ -973,6 +1027,7 @@ ul.social_icon_bottom li a i {
     line-height: 30px;
     text-align: center;
 }
+
 ul.social_icon_bottom li a i:hover {
     color: #f6388e;
     transition: ease-in all 0.5s;
@@ -990,8 +1045,8 @@ ul.social_icon_bottom li a i:hover {
 }
 
 .inner_page .contact,
-.inner_page .gallery, 
-.inner_page .team, 
+.inner_page .gallery,
+.inner_page .team,
 .inner_page .about {
     padding-top: 80px;
-} 
+}

@@ -35,16 +35,21 @@ const loginUser = async (req, res) => {
     try {
 
         const { username, password } = req.body;
-
+        if (!username || !password) {
+            return res.render("login", {
+                error: "Username and password are required!",
+                link: "login"
+            });
+        }
         const user = await User.findOne({ username });
         let same = false;
 
         if (user) {
             same = await bcrypt.compare(password, user.password);
         } else {
-            return res.status(401).json({
-                success: false,
-                error: "There is no such user"
+            return res.status(401).render("login", {
+                error: "There is no such user!",
+                link: "login"
             });
         }
 
@@ -58,16 +63,16 @@ const loginUser = async (req, res) => {
 
             res.redirect("/users/dashboard");
         } else {
-            res.status(401).json({
-                success: false,
-                error: "Passwords do not match!"
+            res.status(401).render("login", {
+                error: "Passwords do not match!.",
+                link: "login"
             });
         }
 
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            error
+        res.status(500).render("login", {
+            error: "An unexpected error occurred. Please try again.",
+            link: "login"
         });
     }
 };

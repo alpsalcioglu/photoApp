@@ -37,6 +37,10 @@ app.use("/", pageRoute);
 app.use("/photos", photoRoute);
 app.use("/users", userRoute);
 
+app.use((req, res) => {
+    res.status(404).render("error", { link: "" });
+});
+
 app.listen(port, () => {
     console.log(`Application running on port: ${port}`);
 });
