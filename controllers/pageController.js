@@ -4,46 +4,46 @@ import User from "../models/userModel.js";
 
 const getIndexPage = async (req, res) => {
 
-    const photos = await Photo.find({}).sort({ uploadedAt: -1 }).limit(3);
-    const numOfUser = await User.countDocuments({});
-    const numOfPhotos = await Photo.countDocuments({});
-    res.render("index", {
-        link: "index",
-        photos,
-        numOfUser,
-        numOfPhotos
-    });
+  const photos = await Photo.find({}).sort({ uploadedAt: -1 }).limit(3);
+  const numOfUser = await User.countDocuments({});
+  const numOfPhotos = await Photo.countDocuments({});
+  res.render("index", {
+    link: "index",
+    photos,
+    numOfUser,
+    numOfPhotos
+  });
 };
 const getAboutPage = (req, res) => {
-    res.render("about", {
-        link: "about"
-    });
+  res.render("about", {
+    link: "about"
+  });
 };
 const getRegisterPage = (req, res) => {
-    res.render("register", {
-        link: "register"
-    });
+  res.render("register", {
+    link: "register"
+  });
 };
 const getContactPage = (req, res) => {
-    res.render("contact", {
-        link: "contact"
-    });
+  res.render("contact", {
+    link: "contact"
+  });
 };
 const getLoginPage = (req, res) => {
-    res.render("login", {
-        link: "login"
-    });
+  res.render("login", {
+    link: "login"
+  });
 };
 const getLogout = (req, res) => {
-    res.cookie("jwt", "", {
-        maxAge: 1
-    });
-    res.redirect('/');
+  res.cookie("jwt", "", {
+    maxAge: 1
+  });
+  res.redirect('/');
 };
 
 const sendMail = async (req, res) => {
 
-    const htmlTemplate = `  <!doctype html>
+  const htmlTemplate = `  <!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -172,43 +172,43 @@ const sendMail = async (req, res) => {
     </table>
   </body>
 </html>`;
-    try {
+  try {
 
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            secure: true, // true for port 465, false for other ports
-            auth: {
-                user: process.env.NODE_MAIL,
-                pass: process.env.NODE_PASS,
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for port 465, false for other ports
+      auth: {
+        user: process.env.NODE_MAIL,
+        pass: process.env.NODE_PASS,
 
-            },
-        });
+      },
+    });
 
-        // async..await is not allowed in global scope, must use a wrapper
-        async function main() {
-            // send mail with defined transport object
-            await transporter.sendMail({
-                to: "alpsalcioglu10@gmail.com",
-                subject: `MAIL FROM: ${req.body.email}`, // Subject line
-                html: htmlTemplate, // html body
-            });
+    // async..await is not allowed in global scope, must use a wrapper
+    async function main() {
+      // send mail with defined transport object
+      await transporter.sendMail({
+        to: "alpsalcioglu10@gmail.com",
+        subject: `MAIL FROM: ${req.body.email}`, // Subject line
+        html: htmlTemplate, // html body
+      });
 
-            res.status(200).json({ success: true });
-        }
-        const { name, email, message } = req.body;
-
-        if (!name || !email || !message) {
-            return res.status(400).json({ success: false, error: "All fields required" });
-        }
-        await main();
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error
-        });
+      res.status(200).json({ success: true });
     }
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, error: "All fields required" });
+    }
+    await main();
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error
+    });
+  }
 }
 
 export { getIndexPage, getAboutPage, getRegisterPage, getLoginPage, getLogout, getContactPage, sendMail };
