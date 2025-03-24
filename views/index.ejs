@@ -24,11 +24,12 @@
                      </div>
                      <div class="col-md-7">
                         <!-- carousel code -->
-                        <div id="banner1" class="carousel slide">
+                        <div id="banner1" class="carousel slide" data-ride="carousel" data-interval="3000">
                            <ol class="carousel-indicators">
                               <li data-target="#banner1" data-slide-to="0" class="active"></li>
-                              <li data-target="#banner1" data-slide-to="1"></li>
-                              <li data-target="#banner1" data-slide-to="2"></li>
+                              <% for(let i=1; i < photos.length + 1; i++){ %>
+                                 <li data-target="#banner1" data-slide-to="<%= i %>"></li>
+                                 <% } %>
                            </ol>
 
                            <div class="carousel-inner">
@@ -104,7 +105,8 @@
 
                         <div class="col-lg-4 col-md-6 ma_bottom30">
                            <div class="lightbox">
-                              <img src="<%= photo.url %>" alt="<%= photo.name %>" style="width: 300px; height: 300px;">
+                              <img src="<%= photo.url %>" alt="<%= photo.name %>"
+                                 style="width: 400px; height: 400px; object-fit: cover;">
                               <div class="view_main">
                                  <div class="pose">
                                     <a class="read_more" href="<%= photo.url %>"><img src="images/ga.png" alt="#" /></a>
@@ -152,24 +154,26 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="team_box text_align_center">
-                        <div class="craig">
-                           <h3>
-                              <%= numOfPhotos %>
-                           </h3>
-                           <span>PHOTOS</span>
-                        </div>
+                        <a href="/photos" style="text-decoration: none; color: inherit;">
+                           <div class="craig">
+                              <h3>
+                                 <%= numOfPhotos %>
+                              </h3>
+                              <span>PHOTOS</span>
+                           </div>
+                        </a>
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="team_box text_align_center">
-                        <div class="craig">
-                           <h3>
-                              <%= numOfUser %>
-                           </h3>
-                           <span>
-                              USERS
-                           </span>
-                        </div>
+                        <a href="/users" style="text-decoration: none; color: inherit;">
+                           <div class="craig">
+                              <h3>
+                                 <%= numOfUser %>
+                              </h3>
+                              <span>USERS</span>
+                           </div>
+                        </a>
                      </div>
                   </div>
 

@@ -78,7 +78,8 @@
                             <% for(photo of photos){ %>
                                 <div class="col-lg-4 col-md-6 ma_bottom30">
                                     <div class="lightbox">
-                                        <img src="<%= photo.url %>" alt="<%= photo.name %>" />
+                                        <img src="<%= photo.url %>" alt="<%= photo.name %>"
+                                            style="width: 400px; height: 400px; object-fit: cover;" />
                                         <div class="view_main">
                                             <div class="pose">
                                                 <a class="read_more" href="/photos/<%= photo._id %>"><img
